@@ -1,37 +1,34 @@
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
+        int n = nums.size();
 
-        int n= nums.size();
+        if (k>n){
+            k=k%n;;
+        }
 
-        if(n==0)return;
-        if(n<k){ k = k%n;  }
-
-        //Reverese emtire array
-        int l=0,r=n-1;
+        //reverse 1st n-k elements
+        int l = 0 , r= n-k-1;
         while(l<r){
-            swap(nums[l],nums[r]);
-            l++,r--;
+            swap(nums[l++],nums[r--]);
         }
 
-
-        //Reverese 1st half of array
-        l=0,r=k-1;
-         while(l<r){
-            swap(nums[l],nums[r]);
-            l++,r--;
-        }
+        //reverse last k elements
+        l=n-k,r=n-1;
+        while(l<r){
+            swap(nums[l++],nums[r--]);
+        } 
 
 
-        //Reverese 2nd half of array
-        l=k,r=n-1;
-         while(l<r){
-            swap(nums[l],nums[r]);
-            l++,r--;
-        }
+        //reverse whole array4
+        l=0,r=n-1;
+        while(l<r){
+            swap(nums[l++],nums[r--]);
+        } 
 
 
-        
+
+
         
     }
 };
